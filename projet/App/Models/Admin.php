@@ -1,7 +1,7 @@
 <?php 
 
-namespace App\Models;
-use App\Models\User;
+namespace Projet\App\Models;
+use Projet\App\Models\User;
 class Admin extends User
 {
 

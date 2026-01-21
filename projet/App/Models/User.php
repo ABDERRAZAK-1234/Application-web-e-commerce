@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace Projet\App\Models;
 abstract class User
 {
     protected string $nom;

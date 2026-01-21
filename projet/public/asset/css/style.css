@@ -1,0 +1,40 @@
+:root {
+    /* Nouveau thème Orange Tech */
+    --accent-orange: #FF6B00; /* Orange vif */
+    --accent-orange-hover: #E56000;
+    --dark-bg: #121416;
+    --light-gray: #f8f9fa;
+}
+
+/* Boutons personnalisés en Orange */
+.btn-primary, .btn-dark {
+    background-color: var(--accent-orange) !important;
+    border-color: var(--accent-orange) !important;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-dark:hover {
+    background-color: var(--accent-orange-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+}
+
+/* Badges et icônes */
+.badge.bg-danger {
+    background-color: var(--accent-orange) !important;
+}
+
+.text-primary {
+    color: var(--accent-orange) !important;
+}
+
+/* Effet de focus sur les formulaires */
+.form-control:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 0, 0.25);
+}
+
+/* Barre de navigation */
+.navbar-brand i {
+    color: var(--accent-orange);
+}
