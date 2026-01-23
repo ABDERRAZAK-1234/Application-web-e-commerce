@@ -4,34 +4,60 @@ namespace Projet\App\Core;
 class Router
 {
     private array $routes = [];
-
-    public function get(string $path, string $controllerAction)
+    private array $currentRoute = [];
+    
+    public function get(string $path, string $action): void
     {
-        $this->routes['GET'][$path] = $controllerAction;
+        $this->routes['GET'][$path] = $action;
     }
-
-    public function post(string $path, string $controllerAction)
+    
+    public function post(string $path, string $action): void
     {
-        $this->routes['POST'][$path] = $controllerAction;
+        $this->routes['POST'][$path] = $action;
     }
-
-    public function resolve()
+    
+    public function dispatch(string $method, string $uri): void
     {
-        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $method = $_SERVER['REQUEST_METHOD'];
-
-        if (!isset($this->routes[$method][$path])) {
-            http_response_code(404);
-            echo "Page not found";
-            exit;
+        $method = strtoupper($method);
+        
+        // Handle empty URI as root
+        if ($uri === '') {
+            $uri = '/';
         }
-
-        $controllerAction = $this->routes[$method][$path];
-        [$controllerName, $action] = explode('@', $controllerAction);
-
-        $controllerClass = "Projet\\App\\Controllers\\" . $controllerName;
-        $controller = new $controllerClass();
-
-        return $controller->$action();
+        
+        if (isset($this->routes[$method][$uri])) {
+            $action = $this->routes[$method][$uri];
+            $this->callAction($action);
+        } else {
+            http_response_code(404);
+            echo "Page not found: {$uri}";
+            echo "<br><br>Available routes:";
+            echo "<ul>";
+            if (isset($this->routes[$method])) {
+                foreach ($this->routes[$method] as $route => $action) {
+                    echo "<li>{$route} -> {$action}</li>";
+                }
+            }
+            echo "</ul>";
+        }
+    }
+    
+    private function callAction(string $action): void
+    {
+        [$controller, $method] = explode('@', $action);
+        
+        $controllerClass = "Projet\\App\\Controllers\\{$controller}";
+        
+        if (class_exists($controllerClass)) {
+            $controllerInstance = new $controllerClass();
+            
+            if (method_exists($controllerInstance, $method)) {
+                call_user_func([$controllerInstance, $method]);
+            } else {
+                throw new \Exception("Method {$method} not found in {$controllerClass}");
+            }
+        } else {
+            throw new \Exception("Controller {$controllerClass} not found");
+        }
     }
 }

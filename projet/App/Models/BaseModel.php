@@ -4,7 +4,7 @@ namespace Projet\App\Models;
 use Projet\App\Core\Database;
 use PDO;
 
-class BaseModel
+abstract class BaseModel
 {
     protected PDO $db;
     protected string $table;

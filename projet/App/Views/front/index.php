@@ -6,7 +6,7 @@
     <title>E-Commerce - Accueil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/public/asset/css/style.css">
+    <link rel="stylesheet" href="<?= asset('css/style.css') ?>">
 </head>
 <body>
     <!-- Navigation -->
@@ -35,7 +35,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link position-relative" href="#cart">
+                        <a class="nav-link position-relative" href="/cart">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cartCount">0</span>
                         </a>
@@ -45,8 +45,8 @@
                             <i class="fas fa-user"></i> Mon Compte
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="login.php">Connexion</a></li>
-                            <li><a class="dropdown-item" href="signUp.php">Inscription</a></li>
+                            <li><a class="dropdown-item" href="/login">Connexion</a></li>
+                            <li><a class="dropdown-item" href="/signup">Inscription</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -66,10 +66,10 @@
                             <a href="#products" class="btn btn-light btn-lg px-5 py-3 pulse-animation">
                                 <i class="fas fa-shopping-bag me-2"></i>Découvrir les produits
                             </a>
-                            <a href="login.php" class="btn btn-outline-light btn-lg px-5 py-3">
+                            <a href="/login" class="btn btn-outline-light btn-lg px-5 py-3">
                                 <i class="fas fa-sign-in-alt me-2"></i>Se connecter
                             </a>
-                            <a href="signUp.php" class="btn btn-outline-light btn-lg px-5 py-3">
+                            <a href="/signup" class="btn btn-outline-light btn-lg px-5 py-3">
                                 <i class="fas fa-user-plus me-2"></i>S'inscrire
                             </a>
                         </div>
@@ -515,8 +515,8 @@
                         <li><a href="#" class="text-white-50">Contact</a></li>
                         <li><a href="#" class="text-white-50">FAQ</a></li>
                         <li><a href="#" class="text-white-50">Politique de confidentialité</a></li>
-                        <li><a href="login.php" class="text-white-50"><i class="fas fa-sign-in-alt me-2"></i>Connexion</a></li>
-                        <li><a href="signUp.php" class="text-white-50"><i class="fas fa-user-plus me-2"></i>Inscription</a></li>
+                        <li><a href="/login" class="text-white-50"><i class="fas fa-sign-in-alt me-2"></i>Connexion</a></li>
+                        <li><a href="/signup" class="text-white-50"><i class="fas fa-user-plus me-2"></i>Inscription</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -541,7 +541,7 @@
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/asset/js/script.js"></script>
+    <script src="../../public/asset/js/script.js"></script>
 </body>
 </html>
 

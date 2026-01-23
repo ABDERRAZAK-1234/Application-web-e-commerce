@@ -7,9 +7,9 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: Ecommerce
     ports:
-    -  "3306:3306"
+      - "3306:3306"
     volumes:
-    -  mysql_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -20,20 +20,20 @@ services:
       PMA_USER: root
       PMA_PASSWORD: root
     ports:
-     -  "8080:80"
+      - "8080:80"
     depends_on:
-     - mysql
-  
+      - mysql
+
   php:
     build: .
     container_name: container_php
     restart: always
     volumes:
-     - ./projet:/var/www/html
+      - ./:/var/www/html
     ports:
-     - "8000:80"
+      - "8000:80"
     depends_on:
-     - mysql
+      - mysql
 
 volumes:
   mysql_data:
